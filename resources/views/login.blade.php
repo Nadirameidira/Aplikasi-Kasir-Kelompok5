@@ -21,6 +21,7 @@
         <input type="password" name="password"><br><br> 
         <label>Confirm Password:</label><br>
         <input type="password" name="confirm_password"><br><br>
+        <p> Pastikan password sesuai.</p>
  
         <button type="submit">Login</button> 
     </form> 
