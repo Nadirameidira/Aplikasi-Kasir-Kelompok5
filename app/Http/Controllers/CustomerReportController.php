@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class CustomerReportController extends Controller
 {
-    // 1. GET /reports/daily
     public function getDailyReport()
     {
         $today = now()->toDateString();
@@ -18,27 +17,23 @@ class CustomerReportController extends Controller
         return view('reports.daily', compact('totalRevenue', 'totalTransactions', 'transactions'));
     }
 
-    // 2. GET /reports/low-stock
     public function getLowStock()
     {
         $lowStockProducts = DB::table('products')->where('stock', '<', 10)->get();
         return view('reports.low_stock', compact('lowStockProducts'));
     }
 
-    // 3. GET /customers
     public function getAllCustomers()
     {
         $customers = DB::table('customers')->orderBy('name', 'asc')->get();
         return view('customers.index', compact('customers'));
     }
 
-    // 4. GET /customers/register
     public function showRegisterForm()
     {
         return view('customers.register');
     }
 
-    // 5. POST /customers/register
     public function registerCustomer(Request $request)
     {
         $validated = $request->validate([
