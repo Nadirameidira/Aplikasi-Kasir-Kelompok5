@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerReportController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\DB; 
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login'); 
@@ -62,8 +63,7 @@ Route::get('/vulnerable', function () {
     $name = request('name'); 
     $user = DB::select("SELECT * FROM users WHERE name = '$name'"); 
     return $user; 
-})
-use App\Http\Controllers\TransactionController;
+});
 
 //rute kasir 
 Route::prefix('transactions')->group(function () {
