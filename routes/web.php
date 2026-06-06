@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\DB;
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login'); 
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::resource('posts', PostController::class);
-
 
 Route::get('/vulnerable', function () { 
 $name = request('name'); 
@@ -18,7 +16,7 @@ return $user;
 }); 
 
 Route::get('/', function () {
-    return redirect('/posts');
+    return redirect('/login');
 });
 
 Route::middleware('auth')->group(function() { 
