@@ -27,4 +27,5 @@
         <button type="submit">Login</button> 
     </form> 
 </body> 
+<a href="/register">Belum punya akun? Daftar</a>
 </html>
