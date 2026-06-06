@@ -14,7 +14,6 @@ Route::get('/', function () {
     return redirect('/products');
 });
 
-// MODUL INVENTORI & PRODUK (/products) - STESA
 // 1. GET /products : Menampilkan katalog produk, fitur pencarian, dan filter kategori.
 Route::get('/products', function () {
     return view('products.index');
@@ -24,6 +23,9 @@ Route::get('/products', function () {
 Route::get('/products/create', function () {
     return view('products.create');
 });
+
+Route::get('/', function () {
+    return redirect('/login');
 
 // 3. GET /products/{id}/edit : Menampilkan form untuk menyunting data dan stok produk.
 Route::get('/products/{id}/edit', function ($id) {
