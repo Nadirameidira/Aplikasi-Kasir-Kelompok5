@@ -16,6 +16,7 @@
         @csrf 
         <label>Email:</label><br> 
         <input type="email" name="email"><br><br> 
+        
  
         <label>Password:</label><br> 
         <input type="password" name="password"><br><br> 
@@ -26,4 +27,5 @@
         <button type="submit">Login</button> 
     </form> 
 </body> 
+<a href="/register">Belum punya akun? Daftar</a>
 </html>
