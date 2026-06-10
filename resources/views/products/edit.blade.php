@@ -6,7 +6,7 @@
  <br>
  <input name="name" value="Contoh Nama Produk" required>
  <br>
- <br>
+ <br> 
  Jumlah Stok:
  <br>
  <input type="number" name="stock" value="10" min="0" required>
