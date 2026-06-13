@@ -8,7 +8,9 @@ use App\Http\Controllers\CustomerReportController;
 use Illuminate\Support\Facades\DB; 
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\KasirController;
-
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login'); 
 Route::post('/login', [AuthController::class, 'login']);
@@ -20,6 +22,15 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/', function () {
     return redirect('/login');
+});
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotForm'])->name('password.request');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink'])->name('password.email');
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
+
+Route::middleware('auth')->group(function() {
+    Route::get('/kasir/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.update-password');
 });
 
 Route::middleware(['auth', 'kasir'])->prefix('kasir')->group(function () {
