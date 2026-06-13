@@ -16,7 +16,7 @@ class KasirMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() || Auth::user()->role !== 'kasir') {
+        if (Auth::check() & Auth::user()->role !== 'kasir') {
             abort(403, 'Unauthorized!! Cashier only!!');
         }
         return $next($request);

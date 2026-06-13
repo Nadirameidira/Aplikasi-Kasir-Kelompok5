@@ -7,6 +7,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerReportController;
 use Illuminate\Support\Facades\DB; 
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\KasirController;
+
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login'); 
 Route::post('/login', [AuthController::class, 'login']);
@@ -18,6 +20,16 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/', function () {
     return redirect('/login');
+});
+
+Route::middleware(['auth', 'kasir'])->prefix('kasir')->group(function () {
+    Route::get('/', [KasirController::class, 'dashboard']);
+});
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    });
 });
 
 Route::get('/products', function () {

@@ -47,4 +47,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+      public function hasVerifiedEmail()
+    {
+        return true; // ini di tambahin biar gampang aja nanti jelasinya
+    }
 }
