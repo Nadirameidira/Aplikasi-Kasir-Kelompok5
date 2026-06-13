@@ -1,11 +1,14 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Password</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Update Password</h2>
 
-@section('content')
-<div class="container">
-    <h2>Update Password</h2>
-    
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
     @endif
     
     <form method="POST" action="{{ route('profile.update-password') }}">
@@ -29,6 +32,8 @@
         </div>
         
         <button type="submit">Update Password</button>
+        <button type="button" onclick="window.location.href='/login'">login kembali</button>
     </form>
 </div>
-@endsection
+</body>
+</html>
