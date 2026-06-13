@@ -23,7 +23,7 @@
 
  
         <button type="submit">Login</button> 
-           <button type="button" onclick="window.location.href='/reset-password'">Reset Password</button><br><br>
+         <button type="button" onclick="window.location.href='/forgot-password'">Lupa Password?</button>
     </form> 
 </body> 
 <a href="/register">Belum punya akun? Daftar</a>
