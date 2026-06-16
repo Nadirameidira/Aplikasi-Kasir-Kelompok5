@@ -11,6 +11,7 @@ use App\Http\Controllers\KasirController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login'); 
 Route::post('/login', [AuthController::class, 'login']);
@@ -66,17 +67,13 @@ Route::get('/suppliers/{supplier}/edit', [SupplierController::class, 'edit'])->n
 Route::put('/suppliers/{supplier}', [SupplierController::class, 'update'])->name('suppliers.update');
 Route::delete('/suppliers/{supplier}', [SupplierController::class, 'destroy'])->name('suppliers.destroy');
 
-Route::get('/products', function () {
-    return view('products.index');
-})->name('products.index');
-
-Route::get('/products/create', function () {
-    return view('products.create');
-})->name('products.create');
-
-Route::get('/products/{id}/edit', function ($id) {
-    return view('products.edit', ['id' => $id]);
-})->name('products.edit');
+// Products
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
+Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
+Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 Route::middleware('auth')->group(function() { 
     Route::resource('posts', PostController::class); 
