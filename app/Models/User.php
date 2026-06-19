@@ -7,6 +7,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Shift;
 
 class User extends Authenticatable
 {
@@ -50,5 +51,20 @@ class User extends Authenticatable
       public function hasVerifiedEmail()
     {
         return true; // ini di tambahin biar gampang aja nanti jelasinya
+    }
+     public function shifts()
+
+    {
+        return $this->hasMany(Shift::class);
+    }
+
+     public function activeShift()
+    {
+        return $this->hasOne(Shift::class)->where('status', 'open');
+    }
+     public function hasActiveShift()
+
+    {
+        return $this->activeShift()->exists();
     }
 }
