@@ -12,6 +12,7 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShiftController;
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login'); 
 Route::post('/login', [AuthController::class, 'login']);
@@ -39,9 +40,18 @@ Route::middleware(['auth', 'kasir'])->prefix('kasir')->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    });
+    Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/kasir', [AdminController::class, 'kasirList'])->name('admin.kasir');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/kasir/shift/open', [ShiftController::class, 'openForm'])->name('shift.open.form');
+    Route::post('/kasir/shift/open', [ShiftController::class, 'open'])->name('shift.open');
+    Route::post('/kasir/shift/close', [ShiftController::class, 'close'])->name('shift.close');
+});
+
+Route::middleware(['auth', 'kasir', 'check.shift'])->prefix('kasir')->group(function () {
+    Route::get('/', [KasirController::class, 'dashboard'])->name('kasir.dashboard');
 });
 
 //Route::middleware('auth')->group(function() { 

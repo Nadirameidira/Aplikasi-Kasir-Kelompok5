@@ -9,12 +9,14 @@
                 <th>ID</th>
                 <th>Nama</th>
                 <th>Email</th>
+                <th>Role</th>
             </tr>
             @foreach ($kasirs as $kasir)
             <tr>
                 <td>{{ $kasir->id }}</td>
                 <td>{{ $kasir->name }}</td>
                 <td>{{ $kasir->email }}</td>
+                <td>{{ $kasir->role }}</td>
             </tr>
             @endforeach
     </body>
