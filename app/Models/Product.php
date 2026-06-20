@@ -16,4 +16,10 @@ class Product extends Model
         'stock',
         'price',
     ];
+
+    // buat produk mengenali data dari tabel kategori
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

@@ -11,11 +11,7 @@
 
     <div>
         <label>Kategori Produk:</label><br>
-        <select name="category" required>
-            <option value="minuman" {{ $product->category_id == 1 ? 'selected' : '' }}>Minuman</option>
-            <option value="makanan" {{ $product->category_id == 2 ? 'selected' : '' }}>Makanan</option>
-            <option value="alat_tulis" {{ $product->category_id == 3 ? 'selected' : '' }}>Alat Tulis</option>
-        </select>
+        <input type="text" name="category" value="{{ $product->category->name ?? '' }}" required>
     </div>
 
     <div>

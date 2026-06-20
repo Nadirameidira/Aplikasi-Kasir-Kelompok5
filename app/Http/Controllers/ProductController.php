@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product; // Memanggil Model Product asli
+use App\Models\Category; 
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -46,24 +47,24 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'category' => 'required',
+            'name' => 'required|string|max:255',
+            'category' => 'required|string|max:255', 
             'stock' => 'required|integer',
             'price' => 'required|numeric',
         ]);
 
-        // Menerjemahkan kata teks pilihan menjadi angka ID untuk database kelompok
-        $categoryId = 2; // Default Makanan
-        if ($request->category == 'minuman') {
-            $categoryId = 1;
-        } elseif ($request->category == 'alat_tulis') {
-            $categoryId = 3;
-        }
+        // Merapikan teks (contoh: "alat tulis" jadi "Alat Tulis")
+        $categoryName = ucwords(strtolower(trim($request->category)));
+
+        // Fitur auto-add kategori produk: Cari kategori ini. Kalau belum ada di tabel, tolong buatkan.
+        $category = Category::firstOrCreate([
+            'name' => $categoryName
+        ]);
 
         // Simpan langsung menjebol ke database MySQL asli
         Product::create([
             'name' => $request->name,
-            'category_id' => $categoryId,
+            'category_id' => $category->id,
             'stock' => $request->stock,
             'price' => $request->price,
         ]);
@@ -86,23 +87,22 @@ class ProductController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => 'required',
-            'category' => 'required',
+            'name' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
             'stock' => 'required|integer',
             'price' => 'required|numeric',
         ]);
 
-        $categoryId = 2;
-        if ($request->category == 'minuman') {
-            $categoryId = 1;
-        } elseif ($request->category == 'alat_tulis') {
-            $categoryId = 3;
-        }
+        $categoryName = ucwords(strtolower(trim($request->category)));
+
+        $category = Category::firstOrCreate([
+            'name' => $categoryName
+        ]);
 
         $product = Product::findOrFail($id);
         $product->update([
             'name' => $request->name,
-            'category_id' => $categoryId,
+            'category_id' => $category->id,
             'stock' => $request->stock,
             'price' => $request->price,
         ]);

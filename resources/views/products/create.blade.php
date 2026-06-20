@@ -10,12 +10,7 @@
 
     <div>
         <label>Kategori Produk:</label><br>
-        <select name="category" required>
-            <option value="">-- Pilih Kategori --</option>
-            <option value="minuman">Minuman</option>
-            <option value="makanan">Makanan</option>
-            <option value="alat_tulis">Alat Tulis</option>
-        </select>
+        <input type="text" name="category" placeholder="Contoh: Alat Tulis, Minuman..." required>
     </div>
 
     <div>

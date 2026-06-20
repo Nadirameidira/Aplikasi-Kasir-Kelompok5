@@ -19,6 +19,7 @@
                 <th>No</th>
                 <th>Nama Kategori</th>
                 <th>Deskripsi</th>
+                <th>List Produk</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -28,6 +29,11 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $category->name }}</td>
                 <td>{{ $category->description ?? '-' }}</td>
+
+                <td style="text-align: center;">
+                    <a href="{{ route('products.index', ['category' => $category->id]) }}">Lihat</a>
+                </td>
+
                 <td>
                     <a href="{{ route('categories.edit', $category) }}">Ubah</a>
                     <form action="{{ route('categories.destroy', $category) }}" method="POST" style="display:inline;">
