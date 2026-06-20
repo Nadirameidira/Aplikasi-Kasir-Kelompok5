@@ -6,9 +6,9 @@
     Filter Kategori:
     <select name="category">
         <option value="">Semua Kategori</option>
-        <option value="1" {{ request('category') == '1' ? 'selected' : '' }}>Minuman</option>
-        <option value="2" {{ request('category') == '2' ? 'selected' : '' }}>Makanan</option>
-        <option value="3" {{ request('category') == '3' ? 'selected' : '' }}>Alat Tulis</option>
+        @foreach(\App\Models\Category::all() as $cat)
+            <option value="{{ $cat->id }}" {{ request('category') == $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
+        @endforeach
     </select>
     
     <button type="submit">Cari</button>
@@ -32,13 +32,7 @@
             <td style="text-align: center;">{{ $loop->iteration }}</td>
             <td>{{ $product->name }}</td>
             
-            <td>
-                @if($product->category_id == 1) Minuman
-                @elseif($product->category_id == 2) Makanan
-                @elseif($product->category_id == 3) Alat Tulis
-                @else - 
-                @endif
-            </td>
+            <td>{{ $product->category->name ?? '-' }}</td>
             
             <td style="text-align: center;">{{ $product->stock }}</td>
             
