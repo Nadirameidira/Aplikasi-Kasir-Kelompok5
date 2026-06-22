@@ -35,6 +35,7 @@
 
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">Daftarkan Member</button>
+                            <a href="{{ Auth::user()->role == 'admin' ? '/admin' : '/kasir' }}" class="btn btn-secondary ms-2">Kembali ke Dashboard</a>
                         </div>
                     </form>
                 </div>
