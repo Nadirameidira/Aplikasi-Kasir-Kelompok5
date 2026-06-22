@@ -88,6 +88,11 @@ Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('pr
 Route::middleware('auth')->group(function() { 
     Route::resource('posts', PostController::class); 
 
+Route::get('/reports', function() {
+    return redirect('/reports/daily');
+});
+
+
     Route::get('/reports/daily', [CustomerReportController::class, 'getDailyReport']);
     Route::get('/reports/low-stock', [CustomerReportController::class, 'getLowStock']);
     Route::get('/customers', [CustomerReportController::class, 'getAllCustomers']);

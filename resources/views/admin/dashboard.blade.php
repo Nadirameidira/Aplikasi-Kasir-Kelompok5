@@ -13,10 +13,8 @@
         <li><a href="/products">Kelola Produk</a></li>
         <li><a href="/categories">Kelola Kategori</a></li>
         <li><a href="/suppliers">Kelola Supplier</a></li>
-        <li><a href="/transactions">Lihat Semua Transaksi</a></li>
+        <li><a href="/transactions/history">Lihat Semua Transaksi</a></li>
         <li><a href="/reports">Laporan Penjualan</a></li>
-        <li><a href="/kasir">Kelola Data Kasir</a></li>
-        
     </ul>
 <hr>
 
