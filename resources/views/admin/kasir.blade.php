@@ -19,5 +19,7 @@
                 <td>{{ $kasir->role }}</td>
             </tr>
             @endforeach
+            </button> kembali ke <a href="/admin/dashboard">Dashboard</a>
+        </table>
     </body>
 </html>

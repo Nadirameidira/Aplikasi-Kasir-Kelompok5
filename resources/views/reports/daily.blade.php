@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-6">
                 <div class="card bg-info text-white p-4">
-                    <h5>🛒 Total Transaksi Sukses</h5>
+                    <h5>🛒 Total Transaksi </h5>
                     <h3>{{ $totalTransactions }} Transaksi</h3>
                 </div>
             </div>
@@ -30,8 +30,8 @@
             <thead class="table-dark">
                 <tr>
                     <th>Waktu</th>
-                    <th>ID Transaksi</th>
-                    <th>Status</th>
+                    <th>Invoice</th>
+                    <th>Metode Pembayaran</th>
                     <th>Total Belanja</th>
                 </tr>
             </thead>
@@ -40,8 +40,8 @@
                 <tr>
                     <td>{{ $trx->created_at }}</td>
                     <td>TRX-{{ $trx->id }}</td>
-                    <td><span class="badge bg-success">{{ $trx->status }}</span></td>
-                    <td>Rp {{ number_format($trx->total_price, 0, ',', '.') }}</td>
+                    <td><span class="badge bg-success">{{ $trx->payment_method }}</span></td>
+                    <td>Rp {{ number_format($trx->total_amount, 0, ',', '.') }}</td>
                 </tr>
                 @empty
                 <tr>

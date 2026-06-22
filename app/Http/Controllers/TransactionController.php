@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Customer;
+use App\Models\Category;
+use App\Models\Customers;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class TransactionController extends Controller
     public function checkout()
     {
         $products = Product::where('stock', '>', 0)->get();
-        $customers = Customer::all();
+        $customers = Customers::all();
         return view('transactions.checkout', compact('products', 'customers'));
     }
 
