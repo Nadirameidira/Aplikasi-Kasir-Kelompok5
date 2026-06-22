@@ -5,12 +5,26 @@
 <body> 
     <h2>Login</h2> 
  
-    @if ($errors->any()) 
+    @if ($errors->has('email')) 
         <div> 
-            <strong>Error!</strong> {{ $errors->first('email') }} 
+            <strong>Error email not valid!</strong> {{ $errors->first('email') }} 
         </div> 
         <br> 
     @endif 
+
+    @if ($errors->has('password')) 
+        <div> 
+            <strong>Error password not valid!</strong> {{ $errors->first('password') }} 
+        </div> 
+        <br> 
+    @endif
+
+        @if (session('login_error')) 
+        <div> 
+            <strong>Login Error, account not found</strong> {{ session('login_error') }} 
+        </div> 
+        <br> 
+    @endif
  
     <form method="POST" action="/login"> 
         @csrf 
