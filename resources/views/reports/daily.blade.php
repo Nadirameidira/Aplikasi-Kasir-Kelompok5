@@ -51,7 +51,7 @@
             </tbody>
         </table>
         <br>
-        <a href="/posts" class="btn btn-secondary">⬅ Kembali ke Dashboard</a>
+        <a href="{{ Auth::user()->role == 'admin' ? '/admin' : '/kasir' }}" class="btn btn-secondary">⬅ Kembali ke Dashboard</a>
     </div>
 </body>
 </html>
