@@ -84,7 +84,7 @@ class TransactionController extends Controller
             }
 
             return redirect()->route('transactions.show', $transaction->id)
-                             ->with('success', 'Transaksi Berhasil Disimpan!');
+                            ->with('success', 'Transaksi Berhasil Disimpan!');
         });
     }
 
