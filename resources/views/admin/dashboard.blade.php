@@ -3,7 +3,7 @@
     <title>Admin Page</title>
 </head>
 <body>
-    <h2>Halo, Admin {{ Auth::user()->name }}!</h2>
+    <h2>Halo, Admin {{ Auth::user()->name }}! ^_^</h2>
 
     <hr>
 
@@ -15,6 +15,7 @@
         <li><a href="/suppliers">Kelola Supplier</a></li>
         <li><a href="/transactions/history">Lihat Semua Transaksi</a></li>
         <li><a href="/reports">Laporan Penjualan</a></li>
+        <li><a href="/reports/low-stock">Stok Produk Menipis</a></li>
     </ul>
 <hr>
 

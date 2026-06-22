@@ -53,7 +53,7 @@
         <li><a href="/categories">Kelola Kategori</a></li>
         <li><a href="/reports">Laporan Penjualan</a></li>
         <li><a href="/suppliers">Kelola Supplier</a></li>
-        <li><a href="/reports/low-stock">Peringatan Stok Menipis</a></li>
+        <li><a href="/reports/low-stock">Stok Produk Menipis</a></li>
     </ul>
 
     <hr>

@@ -50,3 +50,4 @@
         @endforeach
     </tbody>
 </table>
+<a href="{{ Auth::user()->role == 'admin' ? '/admin' : '/kasir' }}">Kembali ke Dashboard</a>

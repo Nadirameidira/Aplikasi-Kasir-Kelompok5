@@ -21,3 +21,4 @@
 
     <button type="submit">Simpan</button>
 </form>
+<a href="{{ Auth::user()->role == 'admin' ? '/admin' : '/kasir' }}">Kembali ke Dashboard</a>

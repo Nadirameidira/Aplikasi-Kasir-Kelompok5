@@ -59,4 +59,5 @@
         {{ $transactions->links() }}
     </div>
 </body> 
+<a href="{{ Auth::user()->role == 'admin' ? '/admin' : '/kasir' }}">Kembali ke Dashboard</a>
 </html>

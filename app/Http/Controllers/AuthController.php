@@ -24,7 +24,21 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) { 
             $request->session()->regenerate(); 
         } 
- 
+        
+         $user = User::where('email', $request->email)->first();
+
+             if (!$user) {
+            return back()->withErrors([
+                'email' => 'User tidak ditemukan!'
+            ])->withInput();
+        }
+        
+         if (!Hash::check($request->password, $user->password)) {
+            return back()->withErrors([
+                'password' => 'Password salah!'
+            ])->withInput();
+        }
+        
         if (Auth::user()->role == 'admin') { 
             return redirect()->intended('/admin'); 
         } elseif (Auth::user()->role == 'kasir') { 
@@ -33,7 +47,7 @@ class AuthController extends Controller
         
         Auth::logout();
         return back()->withErrors([ 
-            'email' => 'Invalid credentials.', 
+            'email' => 'Emaail atau password salah.', 
         ]); 
     } 
     public function showRegister()
