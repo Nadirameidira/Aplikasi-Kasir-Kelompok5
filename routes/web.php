@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerReportController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\DB; 
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\KasirController;
@@ -88,6 +89,20 @@ Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('pr
 Route::middleware('auth')->group(function() { 
     Route::resource('posts', PostController::class); 
 
+
+Route::get('/vulnerable', function () { 
+    $name = request('name'); 
+    $user = DB::select("SELECT * FROM users WHERE name = '$name'"); 
+    return $user; 
+});
+
+//rute kasir 
+Route::prefix('transactions')->group(function () {
+    Route::get('/checkout', [TransactionController::class, 'checkout'])->name('transactions.checkout'); 
+    Route::post('/checkout', [TransactionController::class, 'store'])->name('transactions.store'); 
+    Route::get('/history', [TransactionController::class, 'history'])->name('transactions.history'); 
+    Route::get('/{id}', [TransactionController::class, 'show'])->name('transactions.show'); 
+    Route::delete('/{id}', [TransactionController::class, 'destroy'])->name('transactions.destroy'); 
 Route::get('/reports', function() {
     return redirect('/reports/daily');
 });

@@ -12,6 +12,7 @@ class Product extends Model
     // Ini ibaratnya kyk kartu paspor biar data dari web diizinkan masuk ke MySQL 
     protected $fillable = [
         'name',
+        'sku',
         'category_id',
         'stock',
         'price',
