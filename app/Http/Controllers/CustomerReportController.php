@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Customer;
+use App\Models\DailyReport;
 
 class CustomerReportController extends Controller
 {
     public function getDailyReport()
     {
         $today = now()->toDateString();
-        $transactions = DB::table('transactions')->whereDate('transaction_date', $today)->where('status', 'Success!')->get();
-        $totalRevenue = $transactions->sum('total_price');
+        $transactions = DB::table('transactions')->whereDate('created_at', $today)->get();
+        $totalRevenue = $transactions->sum('total_amount');
         $totalTransactions = $transactions->count();
 
         return view('reports.daily', compact('totalRevenue', 'totalTransactions', 'transactions'));

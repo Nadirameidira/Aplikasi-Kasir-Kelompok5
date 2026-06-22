@@ -1,15 +1,29 @@
-<h1>Tambah Produk Baru</h1>
-<form method="POST" action="/products">
- @csrf
- Nama Produk:
- <br>
- <input name="name" required>
- <br>
- <br>
- Stok Awal:
- <br>
- <input type="number" name="stock" min="0" required>
- <br>
- <br>
- <button type="submit">Simpan Data & Stok</button>
+<h1>Tambah Produk Baru Yukk!</h1>
+
+<form method="POST" action="/products" style="line-height: 2;">
+    @csrf
+    
+    <div>
+        <label>Nama Produk:</label><br>
+        <input type="text" name="name" placeholder="Contoh: Susu Kotak, Roti..." required>
+    </div>
+
+    <div>
+        <label>Kategori Produk:</label><br>
+        <input type="text" name="category" placeholder="Contoh: Alat Tulis, Minuman..." required>
+    </div>
+
+    <div>
+        <label>Stok Awal:</label><br>
+        <input type="number" name="stock" placeholder="0" required>
+    </div>
+
+    <div>
+        <label>Harga Jual (Rupiah / per unit):</label><br>
+        <input type="number" name="price" placeholder="Contoh: 15000" required>
+    </div>
+
+    <br>
+    <button type="submit">Simpan Produk ke Database</button>
+    <a href="/products">Kembali</a>
 </form>

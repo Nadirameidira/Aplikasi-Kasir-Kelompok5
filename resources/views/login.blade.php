@@ -16,14 +16,15 @@
         @csrf 
         <label>Email:</label><br> 
         <input type="email" name="email"><br><br> 
+        
  
         <label>Password:</label><br> 
         <input type="password" name="password"><br><br> 
-        <label>Confirm Password:</label><br>
-        <input type="password" name="confirm_password"><br><br>
-        <p> Pastikan password sesuai.</p>
+
  
         <button type="submit">Login</button> 
+         <button type="button" onclick="window.location.href='/forgot-password'">Lupa Password?</button>
     </form> 
 </body> 
+<a href="/register">Belum punya akun? Daftar</a>
 </html>
