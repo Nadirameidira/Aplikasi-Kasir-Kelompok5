@@ -47,3 +47,4 @@
         </tbody>
     </table>
 @endif
+<a href="{{ Auth::user()->role == 'admin' ? '/admin' : '/kasir' }}">Kembali ke Dashboard</a>
