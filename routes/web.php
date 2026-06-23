@@ -97,7 +97,7 @@ Route::get('/reports', function() {
     Route::get('/reports/low-stock', [CustomerReportController::class, 'getLowStock']);
     Route::get('/customers', [CustomerReportController::class, 'getAllCustomers']);
     Route::get('/customers/register', [CustomerReportController::class, 'showRegisterForm']);
-    Route::post('/customers/register', [CustomerReportController::class, 'registerCustomer']);
+    Route::post('/customers/register', [CustomerReportController::class, 'registerCustomer'])->name('customers.register');
 
     Route::prefix('transactions')->group(function () {
         Route::get('/checkout', [TransactionController::class, 'checkout'])->name('transactions.checkout'); 
