@@ -20,4 +20,4 @@
  5. Fitur Suplier
  6. Fitur Laporan harian pendapatan
  7. Fitur Low stock untuk melihat stok yang menipis
- 8. Fitur Customers (loyal customer)
+ 8. Fitur Customers ( Member)
