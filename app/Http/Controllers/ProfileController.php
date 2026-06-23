@@ -26,9 +26,9 @@ class ProfileController extends Controller
         if (!Hash::check($request->current_password, $user->password)) {
             return back()->withErrors(['current_password' => 'Password saat ini salah!']);
         }
-
-        $user->password = Hash::make($request->new_password);
-
+        User::where('id', $user->id)->update([
+        'password' => Hash::make($request->new_password)
+    ]);
         return back()->with('success', 'Password berhasil diupdate!');
     }
 }
