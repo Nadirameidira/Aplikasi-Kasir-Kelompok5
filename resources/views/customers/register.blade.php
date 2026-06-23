@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
 <div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -13,7 +10,7 @@
                         <div class="alert alert-success">{{ session('success') }}</div>
                     @endif
 
-                    <form action="{{ route('customer.register.store') }}" method="POST">
+                    <form action="{{ route('customers.register') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Nama Lengkap</label>
@@ -33,6 +30,12 @@
                             @error('phone') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
 
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Alamat</label>
+                            <textarea class="form-control @error('address') is-invalid @enderror" id="address" name="address" rows="3" required>{{ old('address') }}</textarea>
+                            @error('address') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
+
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">Daftarkan Member</button>
                             <a href="{{ Auth::user()->role == 'admin' ? '/admin' : '/kasir' }}" class="btn btn-secondary ms-2">Kembali ke Dashboard</a>
@@ -43,4 +46,4 @@
         </div>
     </div>
 </div>
-@endsection
+</body>
